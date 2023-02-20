@@ -1,0 +1,590 @@
+//colors
+$color0: #fff;
+$color1: #e3e3e3;
+$color2: #01b4e4;
+$color3: #D7D7D7;
+$color4: #eee;
+$color5: #9e9e9e;
+$color6: #000;
+$color7: #E4E4E4;
+$color8: #0a1526;
+$color9: #081c22;
+$color10: #032541;
+
+//measures
+$imageBorderRadius: 8px;
+$discoverColumnPadding: 30px;
+$maxPrimaryPageWidth: 1400px;
+
+html {
+  --numberOfDiscoverColumns: 1;
+}
+
+@media only screen and (min-width: 700px) {
+  html {
+    --numberOfDiscoverColumns: 2;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  html {
+    --numberOfDiscoverColumns: 3;
+  }
+}
+
+
+@media only screen and (min-width: 1040px) {
+  html {
+    --numberOfDiscoverColumns: 4;
+  }
+}
+
+@media only screen and (min-width: 1240px) {
+  html {
+    --numberOfDiscoverColumns: 5;
+  }
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  height: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  color: $color6;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-size: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+.column_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  background-color: $color0;
+}
+
+.container {
+  flex-wrap: wrap;
+  max-width: $maxPrimaryPageWidth;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.title {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.title h2 {
+  font-size: 1.6em;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+/*GENRES FILTER*/
+.card {
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  border: 1px solid rgba($color1, 1);
+  background-color: $color0;
+}
+
+.filter_panel {
+  min-width: 260px;
+  width: 260px;
+  border: 1px solid $color1;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.filter {
+  width: 100%;
+  border-top: 1px solid $color4;
+  padding: 14px 16px 16px 16px;
+  background-color: $color0;
+}
+
+.filter h4 {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin: 0;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.filter ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+li {
+  display: inline-flex;
+    border: 1px solid $color5;
+    border-radius: 14px;
+    padding: 4px 12px;
+    font-size: 0.9em;
+    margin-right: 6px;
+    margin-top: 8px;
+}
+
+.filter ul li a {
+  color: $color6;
+  text-decoration: none;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.filter ul li.selected, .filter ul li:hover, .filter ul li:hover a, .filter ul li a:hover, .filter ul li.selected a {
+  background-color: rgba($color2, 1);
+  color: $color0;
+  border-color: rgba($color2, 1); 
+}
+
+.filter ul li.no_hover:hover, .filter ul li.no_hover a {
+  background-color: transparent;
+  color: $color6;
+  border-color: $color5;
+}
+
+.search {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  overflow: hidden;
+  border-radius: 20px;
+  height: 44px;
+  background-color: rgba($color2, 1);
+}
+
+
+
+.search.fixed {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-radius: 0;
+  z-index: 5;
+}
+
+.search p {
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.search a {
+  color: $color0;
+  font-size: 1.2em;
+  line-height: 1;
+  font-weight: 600;
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  cursor: pointer;
+}
+
+.disabled {
+  background-color: rgba($color7,0.7);
+}
+
+.disabled a {
+  color: rgba($color6,0.5);
+  backdrop-filter: blur(10px);
+  cursor: default;
+  pointer-events: none;
+}
+
+.disabled:hover {
+  background-color: rgba($color7,0.7);
+}
+
+.search.enabled:hover {
+  background-color: $color10;
+}
+
+/*MOVIE LIST*/
+.no_pad {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.white_column {
+  padding-left: 30px;
+  background: transparent;
+  width: calc(100vw - 80px - 268px);
+  max-width: calc($maxPrimaryPageWidth - 80px - 268px);
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 1 auto;
+}
+
+.panel:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+.panel:last-of-type {
+  padding-bottom: 0;
+}
+
+.panel {
+  width: 100%;
+  display: block;
+  padding: 30px 0;
+  border-top: 1px solid $color3;
+}
+
+.results {
+  margin-top: -30px;
+}
+
+.page_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+div.card.style_1 {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  border: 1px solid $color1;
+  border-radius: $imageBorderRadius;
+  overflow: hidden;
+  margin-top: 30px;
+  width: calc((100vw - 80px - 260px - ($discoverColumnPadding * var(--numberOfDiscoverColumns))) / var(--numberOfDiscoverColumns));
+  max-width: calc(($maxPrimaryPageWidth - 80px - 260px - ($discoverColumnPadding * var(--numberOfDiscoverColumns))) / var(--numberOfDiscoverColumns));
+}
+
+.image {
+  width: 100%;
+  height: calc((100vw - 80px - 260px - ($discoverColumnPadding * var(--numberOfDiscoverColumns))) / var(--numberOfDiscoverColumns) * 1.5);
+  max-height: calc(($maxPrimaryPageWidth - 80px - 260px - ($discoverColumnPadding * var(--numberOfDiscoverColumns))) / var(--numberOfDiscoverColumns) * 1.5);
+}
+
+div.card.style_1 div.image div.wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+div.card.style_1 div.image div.wrapper a.image {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  color: $color6;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+img, a img {
+    outline: none;
+}
+
+.image img {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+div.card.style_1 div.content {
+  width: 100%;
+  padding: 26px 10px 12px 10px;
+  position: relative;
+  white-space: normal;
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.consensus {
+  width: 68px;
+  height: 68px;
+  display: inline-block;
+  transition: transform .2s;
+  transform: scale(1);
+}
+
+.consensus.tight {
+  width: 38px;
+  height: 38px;
+  box-sizing: border-box;
+}
+
+div.card.style_1 div.content div.consensus {
+  position: absolute;
+  top: -19px;
+  left: 10px;
+}
+
+.outer_ring {
+  display: inline-block;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  padding: 4px;
+  background-color: $color9;
+}
+
+.consensus.tight div.outer_ring {
+  width: 38px;
+  height: 38px;
+  padding: 2px;
+}
+
+div.card div.consensus div.outer_ring {
+  margin-right: 0;
+}
+
+.user_score_chart {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  
+}
+
+.percent {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+div.card.style_1 div.content h2 {
+  font-weight: 600;
+  font-size: 1em;
+  margin: 0;
+  width: 100%;
+  word-wrap: normal;
+  overflow-wrap: break-word;
+}
+
+div.card.style_1 div.content p {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  color: rgba($color6,0.6);
+}
+
+div.card.style_1 div.content #overview {
+  display: none
+}
+
+div.card.style_1 div.content a {
+  font-weight: 700;
+  color: $color6;
+}
+
+ div.card.style_1 div.content a:hover {
+  color: rgba($color2, 1);
+}
+
+div.pagination {
+  color: $color6;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  max-width: 500px;
+  width: auto;
+  background-color: rgba($color2, 1);
+}
+
+div.pagination.infinite {
+  margin-top: 30px;
+  padding: 0;
+  max-width: 100%;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $imageBorderRadius;
+}
+
+div.pagination p {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.infinite p {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+p.load_more {
+    justify-content: center;
+}
+
+p.load_more a {
+    cursor: pointer;
+}
+
+div.pagination a {
+    font-weight: 600;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+div.pagination p a {
+    color: $color6;
+    display: block;
+}
+
+div.pagination.infinite p a {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: $color0;
+}
+
+div.pagination.infinite p a:hover {
+    color: $color8;
+}
+
+div.pagination.infinite.hide {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .container {
+    align-items: center;
+    align-content: center;
+  }
+
+  .content {
+    flex-direction: column;
+    width: auto;
+    align-items: center;
+    align-content: center;
+  } 
+
+  .filter_panel {
+    width: 100%;
+  }
+
+  .search {
+    margin-bottom: 2em
+  }
+  .white_column {
+    width: 100%;
+    padding-left: 0;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center
+  }
+
+  .page_wrapper {
+    flex-direction: column
+  }
+
+  div.card.style_1 {
+    width: 100%;
+  }
+
+  .image {
+    width: 30%;
+    height: auto;
+
+  }
+
+  div.card.style_1 div.content {
+    width: 70%;
+    align-items: flex-start;
+    text-align: justify;
+  }
+
+  .consensus {
+    display: none
+  }
+
+  div.card.style_1 div.content #overview {
+    margin-top: 2em;
+    font-size: 0.8em;
+    color: $color6;
+    display: block
+  }
+
+  .image img {
+    height: 100%
+  }
+
+}
