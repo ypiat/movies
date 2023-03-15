@@ -110,7 +110,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('on Page', this.state.moviesOnPage)
     const { moviesOnPage, genres } = this.state;
     return (
       <div className='column_wrapper'>
